@@ -1,84 +1,162 @@
-/* RESET */
+/* 1. GLOBAL RESET & BASE */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-/* BODY */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
 body {
-  background: #f5fff9;
-  color: #222;
+  background-color: #f0fdf4;
+  color: #1f2937;
 }
 
-/* HEADER */
-header {
+/* 2. LAYOUT WRAPPER (For Sticky Footer) */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-area {
+  flex: 1; /* Pushes footer to the absolute bottom */
+}
+
+/* 3. NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 40px;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  padding: 0 5%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 2000; /* Ensure it stays above everything */
 }
 
-/* TITLE */
-header h1 {
-  font-size: 26px;
-  font-weight: bold;
-  color: #111;
-  letter-spacing: 1px;
+.nav-logo {
+  font-weight: 800;
+  color: #15803d;
+  font-size: 1.5rem;
 }
 
-/* NAVBAR */
-nav {
-  display: flex;
-  gap: 25px;
-}
-
-nav a {
+.nav-links a {
   text-decoration: none;
-  color: #0a6b3d;
+  color: #374151;
   font-weight: 600;
+  margin-left: 25px;
   transition: 0.3s;
 }
 
-nav a:hover {
-  color: #18a558;
+.nav-links a:hover {
+  color: #16a34a;
 }
 
-/* HERO SECTION */
-.hero {
-  height: 85vh;
+/* 4. HOME HERO SECTION (SLIDER) */
+.home-hero {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-image 1s ease-in-out;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
   text-align: center;
-
-  /* soft paper-like background */
-  background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
-              url("https://images.unsplash.com/photo-1607082348824-0a96f2a4b9e6") center/cover no-repeat;
+  color: white;
+  padding: 0 20px;
 }
 
-.hero h2 {
-  font-size: 40px;
-  color: #0a3d1e;
+.hero-text h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
 }
 
-/* CONTENT AREA (if any) */
-.container {
-  padding: 40px;
+.shop-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: #16a34a;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
+.shop-btn:hover {
+  background: #15803d;
+  transform: translateY(-2px);
+}
+
+/* 5. SHOP & OTHER PAGES */
+.page-container {
+  padding: 120px 5% 40px; /* 120px ensures content starts below navbar */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
   background: white;
-  margin-top: 50px;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-  color: #555;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.price {
+  color: #15803d;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+/* 6. FOOTER */
+.main-footer {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  color: #6b7280;
+  width: 100%;
 }
