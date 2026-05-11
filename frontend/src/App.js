@@ -1,8 +1,8 @@
 import "./index.css";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 
-// 1. DATA ARRAYS
+// --- DATA DEFINITIONS ---
 const homeBgImages = [
   "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=1600&q=60",
   "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=1600&q=60",
@@ -10,20 +10,22 @@ const homeBgImages = [
 ];
 
 const productsData = [
-  { id: 1, name: "Kraft Boutique Bag (10-pack)", price: 25, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Twisted handle, heavy-duty 120gsm paper." },
-  { id: 2, name: "White Retail Bag (10-pack)", price: 28, image: "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=600&q=60", desc: "Glossy finish, twisted handle, reinforced base." },
-  { id: 3, name: "Recycled Grocery Sack (50-pack)", price: 40, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Traditional SOS flat handle, sturdy 150gsm." },
-  { id: 4, name: "Mini Gift Bags (Assorted)", price: 30, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Vibrant colors (Red, Gold, Blue) for small items." },
-  { id: 5, name: "Eco Takeaway Sack", price: 15, image: "https://images.unsplash.com/photo-1527383214149-cb7be04ae387?auto=format&fit=crop&w=600&q=60", desc: "Wide base takeout sack with flat paper handles." },
-  { id: 6, name: "Large Delivery Sack", price: 35, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Extra capacity, reinforced base for food boxes." },
-  { id: 7, name: "Recycle Symbol Kraft", price: 22, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Featuring prominent recycle logo print." },
-  { id: 8, name: "Plain SOS Lunch Bags (200)", price: 18, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Traditional brown lunch bag, no handles." },
-  { id: 9, name: "Gusseted Pastry Bag (Clear Window)", price: 6, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "Greaseproof paper with a compostable window." },
-  { id: 10, name: "Assorted Sized Pack", price: 55, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "10 Small, 10 Medium, 10 Large, 10 XL sacks." }
+  { id: 1, name: "Kraft Boutique Bag (M)", price: 15, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Classic brown kraft with twisted handles." },
+  { id: 2, name: "White Retail Bag (L)", price: 18, image: "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=600&q=60", desc: "Clean white boutique style for retail." },
+  { id: 3, name: "Red Celebration Bag (S)", price: 12, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Small colorful bags for gifts and events." },
+  { id: 4, name: "Recycled Symbol Kraft", price: 20, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Eco-friendly printed recycled logo." },
+  { id: 5, name: "Matte Black Luxury (M)", price: 25, image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=600&q=60", desc: "Elegant black finish for luxury stores." },
+  { id: 6, name: "Flat Handle Takeout (XL)", price: 22, image: "https://images.unsplash.com/photo-1527383214149-cb7be04ae387?auto=format&fit=crop&w=600&q=60", desc: "Wide base ideal for food delivery." },
+  { id: 7, name: "Blue Party Bag (S)", price: 10, image: "https://images.unsplash.com/photo-1606189933369-012b5e003722?auto=format&fit=crop&w=600&q=60", desc: "Mini blue kraft bags for party favors." },
+  { id: 8, name: "Wine Bottle Carrier", price: 14, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Tall and slim design with reinforced base." },
+  { id: 9, name: "Gusseted Pastry Window", price: 8, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "White paper with a clear compostable window." },
+  { id: 10, name: "Heavy Duty Bulk Sack", price: 30, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Large capacity for bulk retail orders." }
 ];
 
+// --- MAIN APP COMPONENT ---
 export default function App() {
   const [cart, setCart] = useState([]);
+  const [user, setUser] = useState(null);
   const [bgIndex, setBgIndex] = useState(0);
 
   useEffect(() => {
@@ -34,7 +36,6 @@ export default function App() {
   }, []);
 
   const addToCart = (product) => setCart([...cart, product]);
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <Router>
@@ -47,76 +48,22 @@ export default function App() {
             <Link to="/cart">Cart ({cart.length})</Link>
             <Link to="/about">About</Link>
             <Link to="/contact">Contact</Link>
+            {user ? (
+              <span className="user-name">Welcome, {user.name}</span>
+            ) : (
+              <Link to="/login" className="login-link">Login</Link>
+            )}
           </div>
         </nav>
 
         <main className="content-area">
           <Routes>
-            <Route path="/" element={
-              <div className="home-hero" style={{ backgroundImage: `url(${homeBgImages[bgIndex]})` }}>
-                <div className="hero-overlay"></div>
-                <div className="hero-text">
-                  <h2>Eco Friendly Packaging Solutions</h2>
-                  <p>High quality biodegradable paper bags for modern businesses</p>
-                  <Link to="/shop" className="shop-btn">Shop Now</Link>
-                </div>
-              </div>
-            } />
-
-          <Route path="/shop" element={
-  <div className="page-container">
-    <h2 className="section-title">Our Premium Product Range</h2>
-    <div className="product-grid">
-      {productsData.map((p) => (
-        <div key={p.id} className="card">
-          <div className="img-container">
-            <img src={p.image} alt={p.name} />
-          </div>
-          <h3>{p.name}</h3>
-          <p style={{fontSize: '0.9rem', color: '#666', margin: '8px 0'}}>{p.desc}</p>
-          <p className="price">${p.price}.00</p>
-          <button onClick={() => addToCart(p)} className="shop-btn">
-            Add to Cart
-          </button>
-        </div>
-      ))}
-    </div>
-  </div>
-} />
-
-            <Route path="/cart" element={
-              <div className="page-container">
-                <h2>Your Shopping Cart</h2>
-                <div className="cart-list">
-                  {cart.length === 0 ? <p>No items in cart yet.</p> : (
-                    cart.map((c, i) => (
-                      <div key={i} className="cart-item">
-                        <span>{c.name}</span>
-                        <span>${c.price}</span>
-                      </div>
-                    ))
-                  )}
-                  <h3 className="cart-total">Total: ${total}</h3>
-                </div>
-              </div>
-            } />
-
-            <Route path="/about" element={
-              <div className="page-container">
-                <h2>About Us</h2>
-                <p>WA Paper Bag Website provides eco-friendly packaging solutions using biodegradable materials.</p>
-                <p><strong>Founder:</strong> Wubgzer Alemayehu</p>
-              </div>
-            } />
-
-            <Route path="/contact" element={
-              <div className="page-container">
-                <h2>Contact Info</h2>
-                <p><strong>Email:</strong> wubgzeralemayehu18@gmail.com</p>
-                <p><strong>Phone:</strong> 0986059839</p>
-                <p><strong>Telegram:</strong> @Wubgzer0319</p>
-              </div>
-            } />
+            <Route path="/" element={<Home bgImage={homeBgImages[bgIndex]} />} />
+            <Route path="/shop" element={<Shop products={productsData} addToCart={addToCart} />} />
+            <Route path="/login" element={<AuthPage setUser={setUser} />} />
+            <Route path="/cart" element={<Cart cart={cart} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
 
@@ -125,5 +72,115 @@ export default function App() {
         </footer>
       </div>
     </Router>
+  );
+}
+
+// --- PAGE COMPONENTS ---
+
+function Home({ bgImage }) {
+  return (
+    <div className="home-hero" style={{ backgroundImage: `url(${bgImage})` }}>
+      <div className="hero-overlay"></div>
+      <div className="hero-text">
+        <h2>Eco Friendly Packaging Solutions</h2>
+        <p>Sustainable bags for a better tomorrow.</p>
+        <Link to="/shop" className="shop-btn">Shop Now</Link>
+      </div>
+    </div>
+  );
+}
+
+function Shop({ products, addToCart }) {
+  return (
+    <div className="page-container">
+      <h2 className="section-title">Our Collection</h2>
+      <div className="product-grid">
+        {products.map((p) => (
+          <div key={p.id} className="card">
+            <div className="img-container">
+              <img src={p.image} alt={p.name} />
+            </div>
+            <h3>{p.name}</h3>
+            <p className="desc">{p.desc}</p>
+            <p className="price">${p.price}.00</p>
+            <button onClick={() => addToCart(p)} className="buy-btn">Add to Cart</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AuthPage({ setUser }) {
+  const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setUser({ name: "Valued Customer" });
+    navigate("/shop");
+  };
+
+  return (
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>{isLogin ? "Login" : "Sign Up"}</h2>
+        <form onSubmit={handleSubmit}>
+          {!isLogin && <input type="text" placeholder="Name" required />}
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit" className="buy-btn">{isLogin ? "Login" : "Create Account"}</button>
+        </form>
+        <button className="toggle-auth" onClick={() => setIsLogin(!isLogin)}>
+          {isLogin ? "Switch to Sign Up" : "Switch to Login"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function Cart({ cart }) {
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  return (
+    <div className="page-container">
+      <h2>Your Cart</h2>
+      {cart.length === 0 ? <p>Your cart is empty.</p> : (
+        <div className="cart-list">
+          {cart.map((item, index) => (
+            <div key={index} className="cart-item">
+              <span>{item.name}</span>
+              <span>${item.price}</span>
+            </div>
+          ))}
+          <h3 className="cart-total">Total: ${total}</h3>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function About() {
+  return (
+    <div className="page-container">
+      <h2 className="section-title">About Us</h2>
+      <div className="about-content">
+        <p>WA Paper Bag Website provides eco-friendly packaging solutions using biodegradable materials.</p>
+        <p><strong>Founder:</strong> Wubgzer Alemayehu</p>
+        <p><strong>Mission:</strong> To reduce plastic waste through sustainable paper alternatives.</p>
+      </div>
+    </div>
+  );
+}
+
+function Contact() {
+  return (
+    <div className="page-container">
+      <h2 className="section-title">Contact Us</h2>
+      <div className="contact-details">
+        <p><strong>Email:</strong> wubgzeralemayehu18@gmail.com</p>
+        <p><strong>Phone:</strong> 0986059839</p>
+        <p><strong>Telegram:</strong> @Wubgzer0319</p>
+      </div>
+    </div>
   );
 }
