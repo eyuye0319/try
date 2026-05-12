@@ -31,7 +31,6 @@ const productsData = [
   { id: 19, name: "Double Bottle Carrier", price: 18, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Internal divider for carrying two wine bottles." },
   { id: 20, name: "Rustic Twine Kraft", price: 14, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Vintage look with natural jute twine handles." }
 ];
-
 // --- MAIN APP COMPONENT ---
 export default function App() {
   const [cart, setCart] = useState([]);
@@ -39,11 +38,16 @@ export default function App() {
   const [bgIndex, setBgIndex] = useState(0);
 
   useEffect(() => {
+    // Changed from 4000 to 1000 for 1-second slides
     const interval = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % homeBgImages.length);
-    }, 4000);
+    }, 1000); 
+    
     return () => clearInterval(interval);
   }, []);
+
+  // ... rest of your code
+
 
   const addToCart = (product) => setCart([...cart, product]);
 

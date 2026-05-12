@@ -12,9 +12,17 @@ html, body, #root { height: 100%; }
 .nav-links a { text-decoration: none; color: #374151; font-weight: 600; }
 .login-link { background: #16a34a; color: white !important; padding: 8px 18px; border-radius: 6px; }
 
+/* HERO */
 .home-hero {
-  height: 100vh; background-size: cover; background-position: center;
-  display: flex; align-items: center; justify-content: center; position: relative;
+  height: 100vh; 
+  background-size: cover; 
+  background-position: center;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  position: relative;
+  /* Add this line for a smooth fade effect */
+  transition: background-image 0.5s ease-in-out; 
 }
 .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
 .hero-text { position: relative; z-index: 2; text-align: center; color: white; }
