@@ -1,95 +1,31 @@
-import "./index.css";
-import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
-
 // --- DATA DEFINITIONS ---
-const homeBgImages = [
-  "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=1600&q=60",
-  "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=1600&q=60",
-  "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1600&q=60"
-];
-
 const productsData = [
+  // Original 10 (Updated with correct images)
   { id: 1, name: "Kraft Boutique Bag (M)", price: 15, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Classic brown kraft with twisted handles." },
   { id: 2, name: "White Retail Bag (L)", price: 18, image: "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=600&q=60", desc: "Clean white boutique style for retail." },
-  { id: 3, name: "Red Celebration Bag (S)", price: 12, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Small colorful bags for gifts and events." },
+  { id: 3, name: "Pink Celebration Bag (S)", price: 12, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Small colorful bags for gifts and events." },
   { id: 4, name: "Recycled Symbol Kraft", price: 20, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Eco-friendly printed recycled logo." },
   { id: 5, name: "Matte Black Luxury (M)", price: 25, image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=600&q=60", desc: "Elegant black finish for luxury stores." },
   { id: 6, name: "Flat Handle Takeout (XL)", price: 22, image: "https://images.unsplash.com/photo-1527383214149-cb7be04ae387?auto=format&fit=crop&w=600&q=60", desc: "Wide base ideal for food delivery." },
   { id: 7, name: "Blue Party Bag (S)", price: 10, image: "https://images.unsplash.com/photo-1606189933369-012b5e003722?auto=format&fit=crop&w=600&q=60", desc: "Mini blue kraft bags for party favors." },
   { id: 8, name: "Wine Bottle Carrier", price: 14, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Tall and slim design with reinforced base." },
   { id: 9, name: "Gusseted Pastry Window", price: 8, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "White paper with a clear compostable window." },
-  { id: 10, name: "Heavy Duty Bulk Sack", price: 30, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Large capacity for bulk retail orders." }
+  { id: 10, name: "Heavy Duty Bulk Sack", price: 30, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Large capacity for bulk retail orders." },
+  
+  // NEW 10 Collections
+  { id: 11, name: "Silver Foil Gift Bag", price: 20, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Metallic silver finish for premium gifting." },
+  { id: 12, name: "Teal Ribbon Handle", price: 19, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Sophisticated teal with satin ribbon handles." },
+  { id: 13, name: "Natural Stripe Kraft", price: 16, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Textured striped pattern on natural kraft." },
+  { id: 14, name: "Polka Dot Party Sack", price: 11, image: "https://images.unsplash.com/photo-1530566847844-013093c10845?auto=format&fit=crop&w=600&q=60", desc: "Fun white polka dots on recycled brown paper." },
+  { id: 15, name: "Eco Green Shopper", price: 17, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Bright green dyed paper with cotton handles." },
+  { id: 16, name: "Gold Embossed Boutique", price: 28, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Premium textured gold leaf detail." },
+  { id: 17, name: "Mini Macaron Bag", price: 7, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "Small square base for delicate pastries." },
+  { id: 18, name: "Laminated Navy Tote", price: 24, image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=600&q=60", desc: "High-gloss navy blue for jewelry and fashion." },
+  { id: 19, name: "Double Bottle Carrier", price: 18, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Internal divider for carrying two wine bottles." },
+  { id: 20, name: "Rustic Twine Kraft", price: 14, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Vintage look with natural jute twine handles." }
 ];
 
-// --- MAIN APP COMPONENT ---
-export default function App() {
-  const [cart, setCart] = useState([]);
-  const [user, setUser] = useState(null);
-  const [bgIndex, setBgIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBgIndex((prev) => (prev + 1) % homeBgImages.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const addToCart = (product) => setCart([...cart, product]);
-
-  return (
-    <Router>
-      <div className="app-wrapper">
-        <nav className="navbar">
-          <h1 className="nav-logo">WA PAPER BAG</h1>
-          <div className="nav-links">
-            <Link to="/">Home</Link>
-            <Link to="/shop">Shop</Link>
-            <Link to="/cart">Cart ({cart.length})</Link>
-            <Link to="/about">About</Link>
-            <Link to="/contact">Contact</Link>
-            {user ? (
-              <span className="user-name">Welcome, {user.name}</span>
-            ) : (
-              <Link to="/login" className="login-link">Login</Link>
-            )}
-          </div>
-        </nav>
-
-        <main className="content-area">
-          <Routes>
-            <Route path="/" element={<Home bgImage={homeBgImages[bgIndex]} />} />
-            <Route path="/shop" element={<Shop products={productsData} addToCart={addToCart} />} />
-            <Route path="/login" element={<AuthPage setUser={setUser} />} />
-            <Route path="/cart" element={<Cart cart={cart} />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-
-        <footer className="main-footer">
-          © 2026 WA Paper Bag Website | Eco-friendly Solutions
-        </footer>
-      </div>
-    </Router>
-  );
-}
-
-// --- PAGE COMPONENTS ---
-
-function Home({ bgImage }) {
-  return (
-    <div className="home-hero" style={{ backgroundImage: `url(${bgImage})` }}>
-      <div className="hero-overlay"></div>
-      <div className="hero-text">
-        <h2>Eco Friendly Packaging Solutions</h2>
-        <p>Sustainable bags for a better tomorrow.</p>
-        <Link to="/shop" className="shop-btn">Shop Now</Link>
-      </div>
-    </div>
-  );
-}
-
+// --- SHOP COMPONENT ---
 function Shop({ products, addToCart }) {
   return (
     <div className="page-container">
@@ -98,7 +34,12 @@ function Shop({ products, addToCart }) {
         {products.map((p) => (
           <div key={p.id} className="card">
             <div className="img-container">
-              <img src={p.image} alt={p.name} />
+              {/* Added a fallback system to prevent broken images seen in image_827aae.jpg */}
+              <img 
+                src={p.image} 
+                alt={p.name} 
+                onError={(e) => { e.target.src = 'https://via.placeholder.com/600x400?text=Paper+Bag'; }} 
+              />
             </div>
             <h3>{p.name}</h3>
             <p className="desc">{p.desc}</p>
@@ -106,80 +47,6 @@ function Shop({ products, addToCart }) {
             <button onClick={() => addToCart(p)} className="buy-btn">Add to Cart</button>
           </div>
         ))}
-      </div>
-    </div>
-  );
-}
-
-function AuthPage({ setUser }) {
-  const [isLogin, setIsLogin] = useState(true);
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setUser({ name: "Valued Customer" });
-    navigate("/shop");
-  };
-
-  return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h2>{isLogin ? "Login" : "Sign Up"}</h2>
-        <form onSubmit={handleSubmit}>
-          {!isLogin && <input type="text" placeholder="Name" required />}
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
-          <button type="submit" className="buy-btn">{isLogin ? "Login" : "Create Account"}</button>
-        </form>
-        <button className="toggle-auth" onClick={() => setIsLogin(!isLogin)}>
-          {isLogin ? "Switch to Sign Up" : "Switch to Login"}
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function Cart({ cart }) {
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
-  return (
-    <div className="page-container">
-      <h2>Your Cart</h2>
-      {cart.length === 0 ? <p>Your cart is empty.</p> : (
-        <div className="cart-list">
-          {cart.map((item, index) => (
-            <div key={index} className="cart-item">
-              <span>{item.name}</span>
-              <span>${item.price}</span>
-            </div>
-          ))}
-          <h3 className="cart-total">Total: ${total}</h3>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div className="page-container">
-      <h2 className="section-title">About Us</h2>
-      <div className="about-content">
-        <p>WA Paper Bag Website provides eco-friendly packaging solutions using biodegradable materials.</p>
-        <p><strong>Founder:</strong> Wubgzer Alemayehu</p>
-        <p><strong>Mission:</strong> To reduce plastic waste through sustainable paper alternatives.</p>
-      </div>
-    </div>
-  );
-}
-
-function Contact() {
-  return (
-    <div className="page-container">
-      <h2 className="section-title">Contact Us</h2>
-      <div className="contact-details">
-        <p><strong>Email:</strong> wubgzeralemayehu18@gmail.com</p>
-        <p><strong>Phone:</strong> 0986059839</p>
-        <p><strong>Telegram:</strong> @Wubgzer0319</p>
       </div>
     </div>
   );
