@@ -40,3 +40,38 @@ html, body, #root { height: 100%; }
 
 .buy-btn, .shop-btn { background: #16a34a; color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: none; }
 .main-footer { text-align: center; padding: 20px; background: white; border-top: 1px solid #eee; }
+/* Add to your existing CSS */
+
+.shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.search-box input {
+  padding: 12px 20px;
+  width: 350px;
+  border: 2px solid #16a34a;
+  border-radius: 25px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 8px rgba(22, 163, 74, 0.3);
+}
+
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 50px;
+}
+
+/* Ensure home hero transition stays smooth */
+.home-hero {
+  transition: background-image 0.8s ease-in-out;
+}
