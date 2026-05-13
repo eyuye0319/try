@@ -3,13 +3,17 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 
 // --- DATA DEFINITIONS ---
+// Expanded to 5 Home Background Images
 const homeBgImages = [
   "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=1600&q=60",
   "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=1600&q=60",
-  "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1600&q=60"
+  "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1600&q=60",
+  "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=1600&q=60",
+  "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1600&q=60"
 ];
 
 const productsData = [
+  // Original products with fixed images (replacing the headphones/buildings seen in image_e9e6ff.jpg)
   { id: 1, name: "Kraft Boutique Bag (M)", price: 15, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Classic brown kraft with twisted handles." },
   { id: 2, name: "White Retail Bag (L)", price: 18, image: "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=600&q=60", desc: "Clean white boutique style for retail." },
   { id: 3, name: "Pink Celebration Bag (S)", price: 12, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Small colorful bags for gifts and events." },
@@ -29,25 +33,27 @@ const productsData = [
   { id: 17, name: "Mini Macaron Bag", price: 7, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "Small square base for delicate pastries." },
   { id: 18, name: "Laminated Navy Tote", price: 24, image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=600&q=60", desc: "High-gloss navy blue for jewelry and fashion." },
   { id: 19, name: "Double Bottle Carrier", price: 18, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Internal divider for carrying two wine bottles." },
-  { id: 20, name: "Rustic Twine Kraft", price: 14, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Vintage look with natural jute twine handles." }
+  { id: 20, name: "Rustic Twine Kraft", price: 14, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Vintage look with natural jute twine handles." },
+  
+  // 5 NEW ADDITIONS
+  { id: 21, name: "Red Velvet Gift Bag", price: 26, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Luxurious red paper with premium finish." },
+  { id: 22, name: "Striped Candy Bag", price: 9, image: "https://images.unsplash.com/photo-1530566847844-013093c10845?auto=format&fit=crop&w=600&q=60", desc: "Classic carnival stripes for sweets." },
+  { id: 23, name: "Violet Floral Carrier", price: 21, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Floral pattern for spring collections." },
+  { id: 24, name: "Reinforced Grocery Sack", price: 35, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Heavy-duty paper for heavy groceries." },
+  { id: 25, name: "Mini Jewelry Pouch", price: 6, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "Extra small size for rings and accessories." }
 ];
-// --- MAIN APP COMPONENT ---
+
 export default function App() {
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState(null);
   const [bgIndex, setBgIndex] = useState(0);
 
   useEffect(() => {
-    // Changed from 4000 to 1000 for 1-second slides
     const interval = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % homeBgImages.length);
-    }, 1000); 
-    
+    }, 1000); // 1-second slide speed
     return () => clearInterval(interval);
   }, []);
-
-  // ... rest of your code
-
 
   const addToCart = (product) => setCart([...cart, product]);
 
@@ -62,11 +68,7 @@ export default function App() {
             <Link to="/cart">Cart ({cart.length})</Link>
             <Link to="/about">About</Link>
             <Link to="/contact">Contact</Link>
-            {user ? (
-              <span className="user-name">Welcome, {user.name}</span>
-            ) : (
-              <Link to="/login" className="login-link">Login</Link>
-            )}
+            {user ? <span className="user-name">Welcome, {user.name}</span> : <Link to="/login" className="login-link">Login</Link>}
           </div>
         </nav>
 
@@ -89,8 +91,48 @@ export default function App() {
   );
 }
 
-// --- SUB-COMPONENTS ---
+// --- UPDATED SHOP WITH SEARCH ---
+function Shop({ products, addToCart }) {
+  const [search, setSearch] = useState("");
 
+  const filteredProducts = products.filter((p) =>
+    p.name.toLowerCase().includes(search.toLowerCase()) || 
+    p.desc.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div className="page-container">
+      <div className="shop-header">
+        <h2 className="section-title">Our Collection</h2>
+        <div className="search-box">
+          <input 
+            type="text" 
+            placeholder="Search bags (e.g. 'Kraft', 'Pink')..." 
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+      </div>
+      
+      <div className="product-grid">
+        {filteredProducts.map((p) => (
+          <div key={p.id} className="card">
+            <div className="img-container">
+              <img src={p.image} alt={p.name} onError={(e) => e.target.src="https://via.placeholder.com/300?text=Paper+Bag"} />
+            </div>
+            <h3>{p.name}</h3>
+            <p className="desc">{p.desc}</p>
+            <p className="price">${p.price}.00</p>
+            <button onClick={() => addToCart(p)} className="buy-btn">Add to Cart</button>
+          </div>
+        ))}
+      </div>
+      {filteredProducts.length === 0 && <p className="no-results">No bags found matching "{search}"</p>}
+    </div>
+  );
+}
+
+// (Keep Home, AuthPage, Cart, About, Contact functions from your previous code...)
 function Home({ bgImage }) {
   return (
     <div className="home-hero" style={{ backgroundImage: `url(${bgImage})` }}>
@@ -104,32 +146,10 @@ function Home({ bgImage }) {
   );
 }
 
-function Shop({ products, addToCart }) {
-  return (
-    <div className="page-container">
-      <h2 className="section-title">Our Collection</h2>
-      <div className="product-grid">
-        {products.map((p) => (
-          <div key={p.id} className="card">
-            <div className="img-container">
-              <img src={p.image} alt={p.name} onError={(e) => e.target.src="https://via.placeholder.com/300?text=Paper+Bag"} />
-            </div>
-            <h3>{p.name}</h3>
-            <p className="desc">{p.desc}</p>
-            <p className="price">${p.price}.00</p>
-            <button onClick={() => addToCart(p)} className="buy-btn">Add to Cart</button>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function AuthPage({ setUser }) {
   const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
   const handleSubmit = (e) => { e.preventDefault(); setUser({ name: "Valued Customer" }); navigate("/shop"); };
-
   return (
     <div className="auth-container">
       <div className="auth-card">
@@ -140,9 +160,7 @@ function AuthPage({ setUser }) {
           <input type="password" placeholder="Password" required />
           <button type="submit" className="buy-btn">{isLogin ? "Login" : "Create Account"}</button>
         </form>
-        <button className="toggle-auth" onClick={() => setIsLogin(!isLogin)}>
-          {isLogin ? "Switch to Sign Up" : "Switch to Login"}
-        </button>
+        <button className="toggle-auth" onClick={() => setIsLogin(!isLogin)}>{isLogin ? "Switch to Sign Up" : "Switch to Login"}</button>
       </div>
     </div>
   );
