@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
 
 // --- DATA DEFINITIONS ---
-// Expanded to 5 Home Background Images
 const homeBgImages = [
   "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=1600&q=60",
   "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=1600&q=60",
@@ -13,7 +12,6 @@ const homeBgImages = [
 ];
 
 const productsData = [
-  // Original products with fixed images (replacing the headphones/buildings seen in image_e9e6ff.jpg)
   { id: 1, name: "Kraft Boutique Bag (M)", price: 15, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Classic brown kraft with twisted handles." },
   { id: 2, name: "White Retail Bag (L)", price: 18, image: "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=600&q=60", desc: "Clean white boutique style for retail." },
   { id: 3, name: "Pink Celebration Bag (S)", price: 12, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Small colorful bags for gifts and events." },
@@ -34,13 +32,21 @@ const productsData = [
   { id: 18, name: "Laminated Navy Tote", price: 24, image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=600&q=60", desc: "High-gloss navy blue for jewelry and fashion." },
   { id: 19, name: "Double Bottle Carrier", price: 18, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Internal divider for carrying two wine bottles." },
   { id: 20, name: "Rustic Twine Kraft", price: 14, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Vintage look with natural jute twine handles." },
-  
-  // 5 NEW ADDITIONS
   { id: 21, name: "Red Velvet Gift Bag", price: 26, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Luxurious red paper with premium finish." },
   { id: 22, name: "Striped Candy Bag", price: 9, image: "https://images.unsplash.com/photo-1530566847844-013093c10845?auto=format&fit=crop&w=600&q=60", desc: "Classic carnival stripes for sweets." },
   { id: 23, name: "Violet Floral Carrier", price: 21, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Floral pattern for spring collections." },
   { id: 24, name: "Reinforced Grocery Sack", price: 35, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Heavy-duty paper for heavy groceries." },
-  { id: 25, name: "Mini Jewelry Pouch", price: 6, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "Extra small size for rings and accessories." }
+  { id: 25, name: "Mini Jewelry Pouch", price: 6, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "Extra small size for rings and accessories." },
+  { id: 26, name: "Golden Sunrise Gift Bag", price: 22, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Yellow gradient paper with gold handles." },
+  { id: 27, name: "Eco-Friendly Bread Bag", price: 5, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Long, narrow bag for baguettes and loaves." },
+  { id: 28, name: "Polished Marble Print", price: 29, image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=600&q=60", desc: "Premium marble texture for high-end retail." },
+  { id: 29, name: "Small Seedling Pouch", price: 4, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Compostable pouch for seeds and gardening." },
+  { id: 30, name: "Deep Emerald Shopper", price: 19, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Sturdy emerald green paper with black cord." },
+  { id: 31, name: "Wedding Favor Bag (Lace)", price: 13, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Delicate lace-patterned paper for events." },
+  { id: 32, name: "Rustic Coffee Sack", price: 11, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Thick, textured paper for roasted coffee beans." },
+  { id: 33, name: "Purple Party Poppers", price: 10, image: "https://images.unsplash.com/photo-1606189933369-012b5e003722?auto=format&fit=crop&w=600&q=60", desc: "Bright purple bags for birthday treats." },
+  { id: 34, name: "Champagne Carry Case", price: 16, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Wide-bottom carrier for sparkling wine bottles." },
+  { id: 35, name: "Midnight Sparkle Bag", price: 27, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Black paper with silver glitter accents." }
 ];
 
 export default function App() {
@@ -51,7 +57,7 @@ export default function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setBgIndex((prev) => (prev + 1) % homeBgImages.length);
-    }, 1000); // 1-second slide speed
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -91,11 +97,22 @@ export default function App() {
   );
 }
 
-// --- UPDATED SHOP WITH SEARCH ---
+function Home({ bgImage }) {
+  return (
+    <div className="home-hero" style={{ backgroundImage: `url(${bgImage})` }}>
+      <div className="hero-overlay"></div>
+      <div className="hero-text">
+        <h2>Eco Friendly Packaging Solutions</h2>
+        <p>Sustainable bags for a better tomorrow.</p>
+        <Link to="/shop" className="shop-btn">Shop Now</Link>
+      </div>
+    </div>
+  );
+}
+
 function Shop({ products, addToCart }) {
   const [search, setSearch] = useState("");
-
-  const filteredProducts = products.filter((p) =>
+  const filtered = products.filter(p => 
     p.name.toLowerCase().includes(search.toLowerCase()) || 
     p.desc.toLowerCase().includes(search.toLowerCase())
   );
@@ -107,15 +124,14 @@ function Shop({ products, addToCart }) {
         <div className="search-box">
           <input 
             type="text" 
-            placeholder="Search bags (e.g. 'Kraft', 'Pink')..." 
+            placeholder="Search bags (e.g. 'Kraft', 'Luxury')..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
       </div>
-      
       <div className="product-grid">
-        {filteredProducts.map((p) => (
+        {filtered.map((p) => (
           <div key={p.id} className="card">
             <div className="img-container">
               <img src={p.image} alt={p.name} onError={(e) => e.target.src="https://via.placeholder.com/300?text=Paper+Bag"} />
@@ -127,21 +143,7 @@ function Shop({ products, addToCart }) {
           </div>
         ))}
       </div>
-      {filteredProducts.length === 0 && <p className="no-results">No bags found matching "{search}"</p>}
-    </div>
-  );
-}
-
-// (Keep Home, AuthPage, Cart, About, Contact functions from your previous code...)
-function Home({ bgImage }) {
-  return (
-    <div className="home-hero" style={{ backgroundImage: `url(${bgImage})` }}>
-      <div className="hero-overlay"></div>
-      <div className="hero-text">
-        <h2>Eco Friendly Packaging Solutions</h2>
-        <p>Sustainable bags for a better tomorrow.</p>
-        <Link to="/shop" className="shop-btn">Shop Now</Link>
-      </div>
+      {filtered.length === 0 && <p className="no-results">No bags found matching your search.</p>}
     </div>
   );
 }
