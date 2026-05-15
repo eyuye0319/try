@@ -67,3 +67,21 @@ html, body, #root { height: 100%; }
 
 .no-results { text-align: center; font-size: 1.2rem; color: #666; margin-top: 50px; }
 .main-footer { text-align: center; padding: 30px; background: white; border-top: 1px solid #eee; margin-top: 50px; }
+/* ... Keep all existing CSS ... */
+
+/* Add this line to the card CSS for uniformity */
+.card {
+  /* ... Keep existing styles ... */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures the button is always at the bottom */
+  min-height: 480px; /* Gives cards a standard minimum height */
+}
+
+/* Ensure descriptions don't make the card uneven */
+.desc {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 5px 0;
+  min-height: 40px; /* Adds a fixed height so cards look symmetrical */
+}
