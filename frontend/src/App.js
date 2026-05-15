@@ -47,6 +47,10 @@ const productsData = [
   { id: 33, name: "Purple Party Poppers", price: 10, image: "https://images.unsplash.com/photo-1606189933369-012b5e003722?auto=format&fit=crop&w=600&q=60", desc: "Bright purple bags for birthday treats." },
   { id: 34, name: "Champagne Carry Case", price: 16, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Wide-bottom carrier for sparkling wine bottles." },
   { id: 35, name: "Midnight Sparkle Bag", price: 27, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Black paper with silver glitter accents." }
+
+{ id: 36, name: "Cherry Red Twist Handle (L)", price: 18, image: "https://images.unsplash.com/photo-1589712533034-78330ff2084c?auto=format&fit=crop&w=600&q=60", desc: "Large vibrant cherry red bag for retail." },
+  { id: 37, name: "Glossy Gold Pouch (S)", price: 12, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Small glossy pouch for jewelry or gifts." },
+  { id: 38, name: "Printed Eco-Sack (XL)", price: 35, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "XL size heavy-duty sack for catering or delivery." }
 ];
 
 export default function App() {
