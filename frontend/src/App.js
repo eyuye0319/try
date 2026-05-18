@@ -36,13 +36,7 @@ const productsData = [
   { id: 22, name: "Striped Candy Bag", price: 9, image: "https://images.unsplash.com/photo-1530566847844-013093c10845?auto=format&fit=crop&w=600&q=60", desc: "Classic carnival stripes for sweets." },
   { id: 23, name: "Violet Floral Carrier", price: 21, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Floral pattern for spring collections." },
   { id: 24, name: "Reinforced Grocery Sack", price: 35, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Heavy-duty paper for heavy groceries." },
-  { id: 25, name: "Mini Jewelry Pouch", price: 6, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "Extra small size for rings and accessories." },
-  { id: 26, name: "Golden Sunrise Gift Bag", price: 22, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Yellow gradient paper with gold handles." },
-  { id: 27, name: "Eco-Friendly Bread Bag", price: 5, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Long, narrow bag for baguettes and loaves." },
-  { id: 28, name: "Polished Marble Print", price: 29, image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=600&q=60", desc: "Premium marble texture for high-end retail." },
-  { id: 29, name: "Small Seedling Pouch", price: 4, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Compostable pouch for seeds and gardening." },
-  { id: 30, name: "Deep Emerald Shopper", price: 19, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Sturdy emerald green paper with black cord." },
-  { id: 31, name: "Wedding Favor Bag (Lace)", price: 13, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Delicate lace-patterned paper for events." },
+
 ];
 
 export default function App() {
