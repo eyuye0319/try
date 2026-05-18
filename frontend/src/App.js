@@ -29,9 +29,7 @@ const productsData = [
   { id: 15, name: "Eco Green Shopper", price: 17, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Bright green dyed paper with cotton handles." },
   { id: 16, name: "Gold Embossed Boutique", price: 28, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Premium textured gold leaf detail." },
   { id: 17, name: "Mini Macaron Bag", price: 7, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "Small square base for delicate pastries." },
-  { id: 18, name: "Laminated Navy Tote", price: 24, image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=600&q=60", desc: "High-gloss navy blue for jewelry and fashion." },
-  { id: 19, name: "Double Bottle Carrier", price: 18, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Internal divider for carrying two wine bottles." },
-  
+ 
 ];
 
 export default function App() {
