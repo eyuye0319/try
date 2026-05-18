@@ -43,14 +43,6 @@ const productsData = [
   { id: 29, name: "Small Seedling Pouch", price: 4, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Compostable pouch for seeds and gardening." },
   { id: 30, name: "Deep Emerald Shopper", price: 19, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Sturdy emerald green paper with black cord." },
   { id: 31, name: "Wedding Favor Bag (Lace)", price: 13, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Delicate lace-patterned paper for events." },
-  { id: 32, name: "Rustic Coffee Sack", price: 11, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Thick, textured paper for roasted coffee beans." },
-  { id: 33, name: "Purple Party Poppers", price: 10, image: "https://images.unsplash.com/photo-1606189933369-012b5e003722?auto=format&fit=crop&w=600&q=60", desc: "Bright purple bags for birthday treats." },
-  { id: 34, name: "Champagne Carry Case", price: 16, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Wide-bottom carrier for sparkling wine bottles." },
-  { id: 35, name: "Midnight Sparkle Bag", price: 27, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Black paper with silver glitter accents." }
-
-{ id: 36, name: "Cherry Red Twist Handle (L)", price: 18, image: "https://images.unsplash.com/photo-1589712533034-78330ff2084c?auto=format&fit=crop&w=600&q=60", desc: "Large vibrant cherry red bag for retail." },
-  { id: 37, name: "Glossy Gold Pouch (S)", price: 12, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Small glossy pouch for jewelry or gifts." },
-  { id: 38, name: "Printed Eco-Sack (XL)", price: 35, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "XL size heavy-duty sack for catering or delivery." }
 ];
 
 export default function App() {
