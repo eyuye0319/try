@@ -33,10 +33,7 @@ const productsData = [
   { id: 19, name: "Double Bottle Carrier", price: 18, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Internal divider for carrying two wine bottles." },
   { id: 20, name: "Rustic Twine Kraft", price: 14, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Vintage look with natural jute twine handles." },
   { id: 21, name: "Red Velvet Gift Bag", price: 26, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Luxurious red paper with premium finish." },
-  { id: 22, name: "Striped Candy Bag", price: 9, image: "https://images.unsplash.com/photo-1530566847844-013093c10845?auto=format&fit=crop&w=600&q=60", desc: "Classic carnival stripes for sweets." },
-  { id: 23, name: "Violet Floral Carrier", price: 21, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Floral pattern for spring collections." },
-  { id: 24, name: "Reinforced Grocery Sack", price: 35, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Heavy-duty paper for heavy groceries." },
-
+ 
 ];
 
 export default function App() {
