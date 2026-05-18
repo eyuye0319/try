@@ -31,9 +31,7 @@ const productsData = [
   { id: 17, name: "Mini Macaron Bag", price: 7, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "Small square base for delicate pastries." },
   { id: 18, name: "Laminated Navy Tote", price: 24, image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=600&q=60", desc: "High-gloss navy blue for jewelry and fashion." },
   { id: 19, name: "Double Bottle Carrier", price: 18, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Internal divider for carrying two wine bottles." },
-  { id: 20, name: "Rustic Twine Kraft", price: 14, image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=60", desc: "Vintage look with natural jute twine handles." },
-  { id: 21, name: "Red Velvet Gift Bag", price: 26, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Luxurious red paper with premium finish." },
- 
+  
 ];
 
 export default function App() {
