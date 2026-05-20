@@ -24,9 +24,7 @@ const productsData = [
   { id: 10, name: "Heavy Duty Bulk Sack", price: 30, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Large capacity for bulk retail orders." },
   { id: 11, name: "Silver Foil Gift Bag", price: 20, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Metallic silver finish for premium gifting." },
   { id: 12, name: "Teal Ribbon Handle", price: 19, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Sophisticated teal with satin ribbon handles." },
-  { id: 13, name: "Natural Stripe Kraft", price: 16, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Textured striped pattern on natural kraft." },
-  { id: 14, name: "Polka Dot Party Sack", price: 11, image: "https://images.unsplash.com/photo-1530566847844-013093c10845?auto=format&fit=crop&w=600&q=60", desc: "Fun white polka dots on recycled brown paper." },
-
+ 
 ];
 
 export default function App() {
