@@ -23,7 +23,6 @@ const productsData = [
   { id: 9, name: "Gusseted Pastry Window", price: 8, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "White paper with a clear compostable window." },
   { id: 10, name: "Heavy Duty Bulk Sack", price: 30, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Large capacity for bulk retail orders." },
   { id: 11, name: "Silver Foil Gift Bag", price: 20, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Metallic silver finish for premium gifting." },
-  { id: 12, name: "Teal Ribbon Handle", price: 19, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Sophisticated teal with satin ribbon handles." },
  
 ];
 
