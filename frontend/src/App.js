@@ -26,8 +26,7 @@ const productsData = [
   { id: 12, name: "Teal Ribbon Handle", price: 19, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Sophisticated teal with satin ribbon handles." },
   { id: 13, name: "Natural Stripe Kraft", price: 16, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Textured striped pattern on natural kraft." },
   { id: 14, name: "Polka Dot Party Sack", price: 11, image: "https://images.unsplash.com/photo-1530566847844-013093c10845?auto=format&fit=crop&w=600&q=60", desc: "Fun white polka dots on recycled brown paper." },
-  { id: 15, name: "Eco Green Shopper", price: 17, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Bright green dyed paper with cotton handles." },
-  
+
 ];
 
 export default function App() {
