@@ -21,7 +21,6 @@ const productsData = [
   { id: 7, name: "Blue Party Bag (S)", price: 10, image: "https://images.unsplash.com/photo-1606189933369-012b5e003722?auto=format&fit=crop&w=600&q=60", desc: "Mini blue kraft bags for party favors." },
   { id: 8, name: "Wine Bottle Carrier", price: 14, image: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=600&q=60", desc: "Tall and slim design with reinforced base." },
   { id: 9, name: "Gusseted Pastry Window", price: 8, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "White paper with a clear compostable window." },
-  { id: 10, name: "Heavy Duty Bulk Sack", price: 30, image: "https://images.unsplash.com/photo-1616401784845-180882ba9b64?auto=format&fit=crop&w=600&q=60", desc: "Large capacity for bulk retail orders." },
  
 ];
 
