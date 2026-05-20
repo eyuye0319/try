@@ -27,9 +27,7 @@ const productsData = [
   { id: 13, name: "Natural Stripe Kraft", price: 16, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Textured striped pattern on natural kraft." },
   { id: 14, name: "Polka Dot Party Sack", price: 11, image: "https://images.unsplash.com/photo-1530566847844-013093c10845?auto=format&fit=crop&w=600&q=60", desc: "Fun white polka dots on recycled brown paper." },
   { id: 15, name: "Eco Green Shopper", price: 17, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Bright green dyed paper with cotton handles." },
-  { id: 16, name: "Gold Embossed Boutique", price: 28, image: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=600&q=60", desc: "Premium textured gold leaf detail." },
-  { id: 17, name: "Mini Macaron Bag", price: 7, image: "https://images.unsplash.com/photo-1530631673369-bc20fdb32ff8?auto=format&fit=crop&w=600&q=60", desc: "Small square base for delicate pastries." },
- 
+  
 ];
 
 export default function App() {
