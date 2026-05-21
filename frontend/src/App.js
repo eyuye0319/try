@@ -18,8 +18,7 @@ const productsData = [
   { id: 4, name: "Recycled Symbol Kraft", price: 20, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Eco-friendly printed recycled logo." },
   { id: 5, name: "Matte Black Luxury (M)", price: 25, image: "https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?auto=format&fit=crop&w=600&q=60", desc: "Elegant black finish for luxury stores." },
   { id: 6, name: "Flat Handle Takeout (XL)", price: 22, image: "https://images.unsplash.com/photo-1527383214149-cb7be04ae387?auto=format&fit=crop&w=600&q=60", desc: "Wide base ideal for food delivery." },
-  { id: 7, name: "Blue Party Bag (S)", price: 10, image: "https://images.unsplash.com/photo-1606189933369-012b5e003722?auto=format&fit=crop&w=600&q=60", desc: "Mini blue kraft bags for party favors." },
- 
+  
 ];
 
 export default function App() {
