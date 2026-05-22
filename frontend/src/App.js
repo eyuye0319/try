@@ -15,7 +15,6 @@ const productsData = [
   { id: 1, name: "Kraft Boutique Bag (M)", price: 15, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Classic brown kraft with twisted handles." },
   { id: 2, name: "White Retail Bag (L)", price: 18, image: "https://images.unsplash.com/photo-1612444530582-fc66183b16f7?auto=format&fit=crop&w=600&q=60", desc: "Clean white boutique style for retail." },
   { id: 3, name: "Pink Celebration Bag (S)", price: 12, image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=60", desc: "Small colorful bags for gifts and events." },
-  { id: 4, name: "Recycled Symbol Kraft", price: 20, image: "https://images.unsplash.com/photo-1621319011735-ddc4156ce300?auto=format&fit=crop&w=600&q=60", desc: "Eco-friendly printed recycled logo." },
  
 ];
 
