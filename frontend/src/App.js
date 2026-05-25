@@ -12,8 +12,6 @@ const homeBgImages = [
 ];
 
 const productsData = [
-  { id: 1, name: "Kraft Boutique Bag (M)", price: 15, image: "https://images.unsplash.com/photo-1585238342028-4a9a1a0b3f3c?auto=format&fit=crop&w=600&q=60", desc: "Classic brown kraft with twisted handles." },
- 
 ];
 
 export default function App() {
